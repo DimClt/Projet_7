@@ -7,11 +7,11 @@ let Article = (article) => {
     this.author = article.author;
 };
 
-Article.createNew = (article, result) => {
+Article.createNewArticle = (article, result) => {
     dB.query('INSERT INTO Articles SET ?', article, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, { article_id: res.insertId, ...article });
     });
@@ -21,22 +21,21 @@ Article.getAll = (result) => {
     dB.query('SELECT * FROM Articles INNER JOIN Users ON Articles.author = Users.id', (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });
 };
 
 Article.getOne = (article_id, result) => {
-    dB.query('SELECT * FROM Articles INNER JOIN Users ON Articles.author = Users.id WHERE article_id=?', article_id, (err, res) => {
+    dB.query('SELECT * FROM Articles INNER JOIN Users ON Articles.author = Users.id WHERE Articles.article_id=?', article_id, (err, res) => {
         if (err) {
-            result(err, null);
-            throw err;
+            return result(err, null);
         }
         if (res.length) {
             return result(null, res);
         }
-        result({ message: 'Article inexistant !' }, null);
+        return result({ message: 'Article inexistant !' }, null);
     });
 };
 
@@ -44,7 +43,7 @@ Article.updateArticle = (article, result) => {
     dB.query('UPDATE Articles SET title=?, article_text=? WHERE article_id=?', article, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });
@@ -54,7 +53,7 @@ Article.delete = (articleId, result) => {
     dB.query('DELETE FROM Articles WHERE article_id=?', articleId, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });

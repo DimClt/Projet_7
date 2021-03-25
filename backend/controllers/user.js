@@ -10,8 +10,8 @@ exports.signup = (req, res, next) => {
             let user = {
                 mail: req.body.mail,
                 password: hash,
-                firstname: null,
-                lastname: null,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
                 bio: null
             };
             User.create(user, (err, data) => {
@@ -28,7 +28,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     User.getOne(req.body.mail, (err, user) => {
         if (err) {
-            console.log(err);
+           return res.status(401).json({ err });
         }
         if (user) {
             bcrypt.compare(req.body.password, user.password)
@@ -62,11 +62,11 @@ exports.getAllProfil = (req, res, next) => {
 };
 
 exports.getProfilById = (req, res, next) => {
-    User.getById(req.params.id, (error, user) => {
+    User.getById(req.params.id, (error, data) => {
         if (error) {
             res.status(400).json({ error });
         }
-        res.send(user);
+        res.send(data);
     });
 };
 

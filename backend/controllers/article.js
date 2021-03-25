@@ -7,11 +7,12 @@ exports.createArticle = (req, res, next) => {
         article_text: req.body.article_text,
         author: req.body.userId
     };
-    Article.createNew(article, (error, data) => {
+    Article.createNewArticle(article, (error, data) => {
         if (error) {
             res.status(400).json({ message: 'Article non créé !' });
+        } else {
+            res.send(data);
         }
-        res.send(data);
     });
 };
 
@@ -25,11 +26,11 @@ exports.getAllArticle = (req, res, next) => {
 };
 
 exports.getOneArticle = (req, res, next) => {
-    Article.getOne(req.params.article_id, (error, article) => {
+    Article.getOne(req.params.article_id, (error, data) => {
         if (error) {
             res.status(400).json({ error });
         }
-        res.send(article);
+        res.send(data);
     });
 };
 

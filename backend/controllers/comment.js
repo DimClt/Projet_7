@@ -2,7 +2,7 @@ const Comment = require('../models/comment');
 
 exports.createComment = (req, res, next) => {
     let comment = {
-        comment_article: req.params.article_id,
+        comment_article: req.body.comment_article,
         comment_author: req.body.userId,
         comment_date: new Date(),
         comment_text: req.body.comment_text,
@@ -16,7 +16,7 @@ exports.createComment = (req, res, next) => {
 };
 
 exports.getAllCommentById = (req, res, next) => {
-    Comment.getAllById(req.params.article_id, (error, data) => {
+    Comment.getAllById(req.params.comment_article, (error, data) => {
         if (error) {
             res.status(400).json({ error });
         }

@@ -11,17 +11,17 @@ Comment.create = (comment, result) => {
     dB.query('INSERT INTO Comments SET ?', comment, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, { comment_id: res.insertId, ...comment });
     });
 };
 
-Comment.getAllById = (id, result) => {
-    dB.query('SELECT * FROM Comments INNER JOIN Users ON Comments.comment_author = Users.id WHERE comment_article=?', id, (err, res) => {
+Comment.getAllById = (comment_article, result) => {
+    dB.query('SELECT * FROM Comments INNER JOIN Users ON Comments.comment_author = Users.id WHERE Comments.comment_article=?', comment_article, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });
@@ -31,7 +31,7 @@ Comment.update = (comment, result) => {
     dB.query('UPDATE Comments SET comment_text=? WHERE comment_id=?', comment, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });
@@ -41,7 +41,7 @@ Comment.delete = (commentId, result) => {
     dB.query('DELETE FROM Comments WHERE comment_id=?', commentId, (err, res) => {
         if (err) {
             result(err, null);
-            throw err;
+            return err;
         }
         result(null, res);
     });
