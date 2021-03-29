@@ -40,7 +40,7 @@ Article.getOne = (article_id, result) => {
 };
 
 Article.updateArticle = (article, result) => {
-    dB.query('UPDATE Articles SET title=?, article_text=? WHERE article_id=?', article, (err, res) => {
+    dB.query('UPDATE Articles SET Articles.title=?, Articles.article_text=? WHERE Articles.article_id=?', article, (err, res) => {
         if (err) {
             result(err, null);
             return err;
@@ -49,8 +49,8 @@ Article.updateArticle = (article, result) => {
     });
 };
 
-Article.delete = (articleId, result) => {
-    dB.query('DELETE FROM Articles WHERE article_id=?', articleId, (err, res) => {
+Article.delete = (article_id, result) => {
+    dB.query('DELETE FROM Articles WHERE article_id=?', article_id, (err, res) => {
         if (err) {
             result(err, null);
             return err;

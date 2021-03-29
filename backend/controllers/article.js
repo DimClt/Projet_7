@@ -35,11 +35,11 @@ exports.getOneArticle = (req, res, next) => {
 };
 
 exports.updateOneArticle = (req, res, next) => {
-    let articleUpdate = {
-        title: req.body.title, 
-        article_text: req.body.article_text, 
-        article_id: req.params.article_id
-    };
+    let articleUpdate = [
+        req.body.title, 
+        req.body.article_text, 
+        req.params.article_id
+    ];
     Article.updateArticle(articleUpdate, (error, data) => {
         if (error) {
             res.status(400).json({ error });

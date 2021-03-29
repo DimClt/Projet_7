@@ -2,8 +2,9 @@
   <div id="app">
     <Navigation :key="$route.fullPath" />
     <main>
-      <div class="app-icon"></div>
-      <router-view/>
+      <div class="app-icon">
+        <router-view/>
+      </div>
     </main>
   </div>
 </template>

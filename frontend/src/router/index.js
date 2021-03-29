@@ -30,7 +30,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/article',
+    path: '/publish',
+    name: 'Publish',
+    component: () => import('../views/Publish.vue'),
+    children: [
+      {
+        path: '/update/:article_id(\\d+)',
+        name: 'Update'
+      }
+    ]
+  },
+  {
+    path: '/article/:article_id(\\d+)',
     name: 'Article',
     component: () => import('../views/Article.vue')
   }

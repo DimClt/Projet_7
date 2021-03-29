@@ -4,6 +4,7 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/signup" v-if="!logToken">Inscription</router-link> <span v-if="!logToken">|</span>
         <router-link to="/about" v-if="!logToken">About</router-link>
+        <router-link to="/publish" v-if="logToken">Publier</router-link> <span v-if="logToken">|</span>
         <a @click.prevent="logout" v-if="logToken">Déconnexion</a>
       </nav>
     </header>

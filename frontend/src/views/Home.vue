@@ -1,5 +1,5 @@
 <template>
-    <div class="home" @>
+    <div class="home">
         <div class="article-list" v-if="user || logToken">
             <AllArticles />
         </div>
@@ -39,8 +39,6 @@ export default {
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    // position: relative;
-    // left: -50px;
   }
 }
 </style>

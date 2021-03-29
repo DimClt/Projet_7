@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../middleware/auth');
-
 const articleCtrl = require('../controllers/article');
+const auth = require('../middleware/auth');
 
 router.post('/publish', auth, articleCtrl.createArticle);
 
 router.get('/', articleCtrl.getAllArticle);
-router.get('/:article_id', articleCtrl.getOneArticle);
+router.get('/:article_id', auth, articleCtrl.getOneArticle);
 
 router.put('/:article_id', auth, articleCtrl.updateOneArticle);
 

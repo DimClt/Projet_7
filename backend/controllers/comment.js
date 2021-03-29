@@ -38,7 +38,7 @@ exports.updateComment = (req, res, next) => {
 };
 
 exports.deleteComment = (req, res, next) => {
-    Comment.delete(req.params.article_id, (error, data) => {
+    Comment.delete(req.params.comment_id, (error, data) => {
         if (error) {
             res.status(500).json({ error });
         }

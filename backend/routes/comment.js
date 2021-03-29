@@ -11,6 +11,6 @@ router.get('/:comment_article', commentCtrl.getAllCommentById);
 
 router.put('/:article_id', auth, commentCtrl.updateComment);
 
-router.delete('/:article_id', auth, commentCtrl.deleteComment);
+router.delete('/:comment_id', auth, commentCtrl.deleteComment);
 
 module.exports = router;
