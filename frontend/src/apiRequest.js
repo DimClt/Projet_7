@@ -22,17 +22,29 @@ const api = {
             password: loginForm.password
         })
     },
+    /************* Profile *****************/
+    getUserById(userId) {
+        return axios.get(url+`profiles/${ userId }`, auth)
+    },
+    updateUser({ ...newProfile }) {
+        return axios.put(url+`profiles/${ newProfile.id }`, {
+            ...newProfile
+        }, auth)
+    },
+    deleteUser(userId) {
+        return axios.delete(url+`profiles/${ userId }`, auth)
+    },
     /************* Article *****************/
-    createArticle({ ...articleForm }) {
+    createArticle({ ...article }) {
         return axios.post(url+'articles/publish', {
-            ...articleForm 
+            ...article 
         }, auth)
     },
     getAllArticles() {
-        return axios.get(url+'articles', auth)
+        return axios.get(url+'articles')
     },
     getArticleById(article_id) {
-        return axios.get(url+`articles/${ article_id }`, auth)
+        return axios.get(url+`articles/${ article_id }`)
     },
     updateArticle({ ...newArticle }) {
         return axios.put(url+`articles/${ newArticle.article_id }`, {
@@ -45,13 +57,16 @@ const api = {
     /************* Comments *****************/
     createComment({ ...commentForm }) {
         return axios.post(url+'comments/comment', {
-            comment_article: commentForm.comment_article,
-            userId: commentForm.userId,
-            comment_text: commentForm.comment_text
+            ...commentForm
         }, auth)
     },
     getAllComments(comment_article) {
-        return axios.get(url+`comments/${ comment_article }`, auth)
+        return axios.get(url+`comments/${ comment_article }`)
+    },
+    updateComment({ ...newComment }) {
+        return axios.put(url+`comments/${ newComment.comment_id }`, {
+            ...newComment
+        }, auth)
     },
     deleteComment(comment_id) {
         return axios.delete(url+`comments/${ comment_id }`, auth)

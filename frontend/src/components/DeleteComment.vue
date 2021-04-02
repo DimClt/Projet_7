@@ -1,5 +1,5 @@
 <template>
-    <button @click.prevent="deleteCommentButton()">Supprimer</button>
+    <button class="btn__delete" @click.prevent="deleteCommentButton()">Supprimer</button>
 </template>
 
 <script>

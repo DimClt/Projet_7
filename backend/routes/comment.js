@@ -5,11 +5,11 @@ const auth = require('../middleware/auth');
 
 const commentCtrl = require('../controllers/comment');
 
-router.post('/comment', commentCtrl.createComment);
+router.post('/comment', auth, commentCtrl.createComment);
 
 router.get('/:comment_article', commentCtrl.getAllCommentById);
 
-router.put('/:article_id', auth, commentCtrl.updateComment);
+router.put('/:comment_id', auth, commentCtrl.updateComment);
 
 router.delete('/:comment_id', auth, commentCtrl.deleteComment);
 

@@ -7,7 +7,7 @@ const auth = require('../middleware/auth');
 router.post('/publish', auth, articleCtrl.createArticle);
 
 router.get('/', articleCtrl.getAllArticle);
-router.get('/:article_id', auth, articleCtrl.getOneArticle);
+router.get('/:article_id', articleCtrl.getOneArticle);
 
 router.put('/:article_id', auth, articleCtrl.updateOneArticle);
 

@@ -7,7 +7,7 @@
             <div v-if="userId == item.id" class="article-by-id__controler">
                 <DeleteArticle :article_id="item.article_id"/>
                 <router-link :to="{ name: 'Update', params: { article_id: item.article_id }, query: { ...item }}">
-                    <button>Modifier</button>
+                    <button class="btn__update">Modifier</button>
                 </router-link>
             </div>
             <div class="article-by-id__body">
@@ -33,7 +33,7 @@ export default {
         return {
             article_id: this.$route.params.article_id,
             article: [],
-            userId: localStorage.getItem('userId')
+            userId: Number(localStorage.getItem('userId'))
         }
     },
     mounted: function() {

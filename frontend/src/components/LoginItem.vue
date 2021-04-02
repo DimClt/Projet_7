@@ -7,6 +7,9 @@
             <h1>Connexion</h1>
         </div>
         <form @submit.prevent="submitLoginForm()" class="login__form">
+            <div v-if="errors" class="login__error">
+                        <h3>{{ errors }}</h3>
+                    </div>
             <div class="login__body">
                 <div class="login__form--mail">
                     <label for="mail">Adresse email :</label><br>
@@ -17,7 +20,7 @@
                     <input v-model.lazy="loginForm.password" type="password" name="password" id="password" required>
                 </div>
             </div>
-            <button type="submit">Envoyer</button>
+            <button type="submit" class="btn__submit">Envoyer</button>
         </form>
     </div>
 </template>
@@ -33,13 +36,17 @@ export default {
                 password: ''
             },
             userId: Number,
-            token: String
+            token: String,
+            errors: null
         }
     },
     methods: {
         submitLoginForm() {
             api.login(this.loginForm)
             .then((response) => {
+                // if (response.status(401)) {
+                //     this.errors.push(response)
+                // }
                 this.$emit('submit', {
                     userId: response.data.userId,
                     token: response.data.token
@@ -54,6 +61,9 @@ export default {
                         this.logError(err)
                     }
                 })
+            })
+            .catch(error => {
+                this.errors = error.response.data.message
             })
         }
     }

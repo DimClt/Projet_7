@@ -28,7 +28,7 @@
                     <input v-model.lazy="signupForm.lastname" type="text" name="lastname" id="lastname" required>
                 </div>
             </div>
-            <button type="submit" @click.prevent="submitSignupForm">Envoyer</button>
+            <button type="submit" @click.prevent="submitSignupForm" class="btn__submit">Envoyer</button>
         </form>
     </div>
 </template>

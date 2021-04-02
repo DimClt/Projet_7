@@ -4,19 +4,27 @@
             <ul class="all-comment__list">
                 <li v-for="comment in comments" v-bind:key="comment.comment_id">
                     <div class="all-comment__comment">
-                        <div v-if="userId == comment.id" class="all-comment__controler">
+                        <div v-if="!update && userId == comment.id" class="all-comment__controler">
                             <DeleteComment :comment_id="comment.comment_id"/>
+                            <button @click.prevent="updateComponent" class="btn__update">Modifier</button>
                         </div>
                         <div>
-                            <div>
-                                <p>{{ comment.firstname }} {{ comment.lastname }}</p>
+                            <div v-if="!update">
+                                <div>
+                                    <div>
+                                        <p>{{ comment.firstname }} {{ comment.lastname }}</p>
+                                    </div>
+                                    <div>
+                                        <p>Le : {{ comment.comment_date }}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>{{ comment.comment_text }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p>Le : {{ comment.comment_date }}</p>
+                            <div v-if="update">
+                                <UpdateComment :comment_id="comment.comment_id" :comment_text="comment.comment_text" />
                             </div>
-                        </div>
-                        <div>
-                            <p>{{ comment.comment_text }}</p>
                         </div>
                     </div>
                 </li>
@@ -31,16 +39,19 @@
 <script>
 import api from '../apiRequest'
 import DeleteComment from './DeleteComment'
+import UpdateComment from './UpdateComment'
 export default {
     name: 'AllComment',
     components: {
-        DeleteComment
+        DeleteComment,
+        UpdateComment
     },
     data() {
         return {
             comment_article: this.$route.params.article_id,
             comments: [],
-            userId: localStorage.getItem('userId')
+            userId: localStorage.getItem('userId'),
+            update: false
         }
     },
     mounted: function() {
@@ -50,13 +61,11 @@ export default {
                 thisVue.comments = response.data
             })
     },
-    // computed: {
-    //     author: function() {
-    //         if (this.comment.comment_author === localStorage.getItem('userId')) {
-    //             return author = true
-    //         }
-    //     }
-    // }
+    methods: {
+        updateComponent() {
+            this.update = true
+        }
+    }
 }
 </script>
 

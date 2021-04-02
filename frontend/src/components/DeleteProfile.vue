@@ -1,21 +1,22 @@
 <template>
-    <button class="btn__delete" @click.prevent="deleteArticleButton()">Supprimer</button>
+    <button class="btn__delete" @click.prevent="deleteUserButton()">Supprimer</button>
 </template>
 
 <script>
 import api from '../apiRequest'
 export default {
-    name: 'DeleteArticle',
+    name: 'DeleteProfile',
     props: {
-        article_id: {
+        userId: {
             type: Number,
             required: true
         }
     },
     methods: {
-        deleteArticleButton() {
-            api.deleteArticle(this.article_id)
+        deleteUserButton() {
+            api.deleteUser(this.userId)
                 .then(() => {
+                    localStorage.clear()
                     this.$router.push('/')
                 })
         }

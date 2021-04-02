@@ -1,12 +1,12 @@
 <template>
     <div class="home">
-        <div class="article-list" v-if="user || logToken">
+        <section class="article-list" v-if="user || logToken">
             <AllArticles />
-        </div>
-        <div class="home__login" v-if="!user & !logToken">
+        </section>
+        <section class="home__login" v-if="!user & !logToken">
           <img class="home__img" src="../assets/acceuil-banniere-mobile.png" alt="Image d'acceuil">
           <LoginItem @submit="login" />
-        </div>
+        </section>
     </div>
 </template>
 

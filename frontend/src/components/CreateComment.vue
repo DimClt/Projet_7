@@ -3,7 +3,7 @@
         <div>
             <textarea v-model="commentForm.comment_text" name="comment_text" id="comment_text" cols="30" rows="10" required></textarea>
         </div>
-        <button type="submit">Commenter</button>
+        <button type="submit" class="btn__submit">Commenter</button>
     </form>
 </template>
 

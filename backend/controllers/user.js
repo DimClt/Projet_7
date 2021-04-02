@@ -28,13 +28,13 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     User.getOne(req.body.mail, (err, user) => {
         if (err) {
-           return res.status(401).json({ err });
+           return res.status(401).json(err);
         }
         if (user) {
             bcrypt.compare(req.body.password, user.password)
             .then(valid => {
                 if (!valid) {
-                    return res.status(401).json({ error: 'Mot de passe incorrect !' })
+                    return res.status(401).json({ message: 'Mot de passe incorrect' })
                 }
                 res.status(200).json({
                     userId: user.id,
@@ -71,17 +71,17 @@ exports.getProfilById = (req, res, next) => {
 };
 
 exports.profilUpdate = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
-        .then(hash => {
-            let userUpdate = [req.body.mail, hash, req.body.firstname, req.body.lastname, req.body.bio, req.params.id];
-            User.updateProfil(userUpdate, (error, data) => {
-                if (error) {
-                    res.status(400).json({ error });
-                }
-                res.send(data);
-            });
-        })
-        .catch(error => res.status(500).json({ message: 'Erreur bcrypt' }));
+    let userUpdate = [
+        req.body.firstname, 
+        req.body.lastname, 
+        req.body.bio, 
+        req.params.id];
+    User.updateProfil(userUpdate, (error, data) => {
+        if (error) {
+            res.status(400).json({ error });
+        }
+        res.send(data);
+    });
 };
 
 exports.deleteMyProfil = (req, res, next) => {

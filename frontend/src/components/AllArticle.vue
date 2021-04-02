@@ -1,24 +1,21 @@
 <template>
-    <div class="all-article">
-        <div v-if="articles.length">
-            <ul class="all-article__list">
-                <li v-for="article in articles" v-bind:key="article.article_id">
-                    <router-link :to="{ name: 'Article', params: { article_id: article.article_id } }">
-                        <article class="all-article__article">
-                            <h2>{{ article.title }}</h2>
-                            <div>
-                                <p>Publié par : {{ article.firstname }} {{ article.lastname }}</p>
-                                <p>Le : {{ article.date_document }}</p>
-                            </div>
-                        </article>
-                    </router-link>
-                </li>
-            </ul>
+    <div>
+        <h1>Liste des articles</h1>
+        <div class="section__all-article" v-if="articles.length">
+            <article class="section__article-card" v-for="article in articles" v-bind:key="article.article_id">
+                <router-link :to="{ name: 'Article', params: { article_id: article.article_id } }">
+                        <h2>{{ article.title }}</h2>
+                        <div>
+                            <p>Publié par : {{ article.firstname }} {{ article.lastname }}</p>
+                            <p>Le : {{ article.date_document }}</p>
+                        </div>
+                </router-link>
+            </article>
         </div>
         <div v-else>
             <p>Aucun articles trouvés, merci de recharger la page</p>
         </div>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -40,20 +37,20 @@ export default {
 </script>
 
 <style lang="scss">
-.all-article {
-    &__list {
-        list-style-type: none;
-        padding-left: 0;
-        text-decoration: none;
-        a {
-            text-decoration: none;
-            color: #000;
+// .all-article {
+//     &__list {
+//         list-style-type: none;
+//         padding-left: 0;
+//         text-decoration: none;
+//         a {
+//             text-decoration: none;
+//             color: #000;
             
-        }
-    }
-    &__article {
-        background-color: rgba($color: #8E8E8E, $alpha: .25);
-        border-radius: 5px;
-    }
-}
+//         }
+//     }
+//     &__article {
+//         background-color: rgba($color: #8E8E8E, $alpha: .25);
+//         border-radius: 5px;
+//     }
+// }
 </style>

@@ -40,10 +40,31 @@ export default {
   a {
     font-weight: bold;
     color: #2c3e50;
-
+    text-decoration: underline;
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+
+.btn {
+  &__delete  {
+    border-radius: 5px;
+    background-color: #ff4305;
+    border-color: #f26435;
+    padding: 3px 10px;
+  }
+  &__update {
+    border-radius: 5px;
+    background-color: #42b983;
+    border-color: #066e3f;
+    padding: 3px 10px;
+  }
+  &__submit {
+    border-radius: 5px;
+    background-color: #92adc9;
+    border-color: #132f4b;
+    padding: 3px 10px;
   }
 }
 

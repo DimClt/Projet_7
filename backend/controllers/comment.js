@@ -25,10 +25,10 @@ exports.getAllCommentById = (req, res, next) => {
 };
 
 exports.updateComment = (req, res, next) => {
-    let commentUpdate = {
-        comment_text: req.body.comment_text,
-        article_id: req.params.article_id
-    };
+    let commentUpdate = [
+        req.body.comment_text,
+        req.params.comment_id
+    ];
     Comment.update(commentUpdate, (error, data) => {
         if (error) {
             res.status(400).json({ error });

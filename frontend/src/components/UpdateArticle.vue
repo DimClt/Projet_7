@@ -8,7 +8,7 @@
                 <textarea v-model.lazy="newArticle.article_text" name="article_text" id="article_text" cols="30" rows="10"></textarea>
             </div>
         </div>
-        <button type="submit">Publier</button>
+        <button type="submit" class="btn__submit">Publier</button>
     </form>
 </template>
 

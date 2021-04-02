@@ -44,7 +44,7 @@ User.getOne = (mail, result) => {
 };
 
 User.getById = (id, result) => {
-    dB.query('SELECT mail, firstname, lastname, bio FROM Users WHERE id = ?', id, (error, res) => {
+    dB.query('SELECT * FROM Users WHERE id = ?', id, (error, res) => {
         if (error) {
             result(error, null);
             return error;
@@ -57,7 +57,7 @@ User.getById = (id, result) => {
 };
 
 User.updateProfil = (user, result) => {
-    dB.query('UPDATE Users SET mail=?, password=?, firstname=?, lastname=?, bio=? WHERE id = ?', user, (err, res) => {
+    dB.query('UPDATE Users SET firstname=?, lastname=?, bio=? WHERE id = ?', user, (err, res) => {
         if (err) {
             result(err, null);
             return err;
