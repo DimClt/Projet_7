@@ -3,6 +3,7 @@ const dB =  require('../sql/dbConnect');
 let User = (user) => {
     this.mail = user.mail;
     this.password = user.password;
+    this.user_pict = user.userPict;
     this.firstname = user.firstname;
     this.lastname = user.lastname;
     this.bio = user.bio;
@@ -57,7 +58,7 @@ User.getById = (id, result) => {
 };
 
 User.updateProfil = (user, result) => {
-    dB.query('UPDATE Users SET firstname=?, lastname=?, bio=? WHERE id = ?', user, (err, res) => {
+    dB.query('UPDATE Users SET user_pict = ?, firstname=?, lastname=?, bio=? WHERE id = ?', user, (err, res) => {
         if (err) {
             result(err, null);
             return err;

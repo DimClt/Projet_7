@@ -53,14 +53,15 @@ export default {
                 })
                 localStorage.setItem('userId', response.data.userId)
                 localStorage.setItem('token', response.data.token)
-                this.$router.replace('/home').catch(err => {
-                    if (
-                        err.name !== 'NavigationDuplicated' &&
-                        !err.message.includes('Avoided redundant navigation to current location')
-                    ) {
-                        this.logError(err)
-                    }
-                })
+                window.location.reload()
+                // this.$router.replace('/home').catch(err => {
+                //     if (
+                //         err.name !== 'NavigationDuplicated' &&
+                //         !err.message.includes('Avoided redundant navigation to current location')
+                //     ) {
+                //         this.logError(err)
+                //     }
+                // })
             })
             .catch(error => {
                 this.errors = error.response.data.message

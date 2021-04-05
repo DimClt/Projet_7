@@ -11,11 +11,14 @@
                         <div>
                             <div v-if="!update">
                                 <div>
+                                    <img :src="comment.user_pict" alt="">
                                     <div>
-                                        <p>{{ comment.firstname }} {{ comment.lastname }}</p>
-                                    </div>
-                                    <div>
-                                        <p>Le : {{ comment.comment_date }}</p>
+                                        <div>
+                                            <p>{{ comment.firstname }} {{ comment.lastname }}</p>
+                                        </div>
+                                        <div>
+                                            <p>Le : {{ comment.comment_date }}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>

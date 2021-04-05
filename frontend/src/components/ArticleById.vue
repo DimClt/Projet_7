@@ -12,8 +12,11 @@
             </div>
             <div class="article-by-id__body">
                 <div>
-                    <p>Publié par : {{ item.firstname }} {{ item.lastname }}</p>
-                    <p>Le : {{ item.date_document }}</p>
+                    <img :src="item.user_pict" alt="">
+                    <div>
+                        <p>Publié par : {{ item.firstname }} {{ item.lastname }}</p>
+                        <p>Le : {{ item.date_document }}</p>
+                    </div>
                 </div>
                 <p>{{ item.article_text }}</p>
             </div>

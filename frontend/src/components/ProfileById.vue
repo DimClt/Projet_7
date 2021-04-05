@@ -7,14 +7,17 @@
             </router-link>
         </div>
         <div class="profile__info">
-            <div class="profile_name">
-                <p>{{ profile.firstname }} {{ profile.lastname }}</p>
-            </div>
-            <div class="profile__mail">
-                <p>{{ profile.mail }}</p>
-            </div>
-            <div class="profile__bio">
-                <p>{{ profile.bio }}</p>
+            <img :src="profile.user_pict" alt="">
+            <div>
+                <div class="profile_name">
+                    <p>{{ profile.firstname }} {{ profile.lastname }}</p>
+                </div>
+                <div class="profile__mail">
+                    <p>{{ profile.mail }}</p>
+                </div>
+                <div class="profile__bio">
+                    <p>{{ profile.bio }}</p>
+                </div>
             </div>
         </div>
     </div>

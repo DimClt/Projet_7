@@ -21,8 +21,7 @@ export default {
         return {
             article: {
                 title: '',
-                article_text: '',
-                userId: Number(localStorage.getItem('userId'))
+                article_text: ''
             },
             errors: []
         }

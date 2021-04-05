@@ -1,9 +1,10 @@
 import axios from 'axios'
 const url = 'http://localhost:3000/api/'
 
+const token = localStorage.getItem('token')
 const auth = {
     headers: {
-        authorization: 'Bearer ' + localStorage.getItem('token')
+        authorization: 'Bearer ' + String(token)
     }
 }
 
@@ -26,10 +27,13 @@ const api = {
     getUserById(userId) {
         return axios.get(url+`profiles/${ userId }`, auth)
     },
-    updateUser({ ...newProfile }) {
-        return axios.put(url+`profiles/${ newProfile.id }`, {
-            ...newProfile
-        }, auth)
+    updateUser(newProfile, id) {
+        return axios.put(url+`profiles/${ id }`, newProfile, {
+            headers: {
+                'authorization': 'Bearer ' + String(token),
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     },
     deleteUser(userId) {
         return axios.delete(url+`profiles/${ userId }`, auth)
@@ -37,7 +41,8 @@ const api = {
     /************* Article *****************/
     createArticle({ ...article }) {
         return axios.post(url+'articles/publish', {
-            ...article 
+            ...article,
+            userId: Number(localStorage.getItem('userId'))
         }, auth)
     },
     getAllArticles() {

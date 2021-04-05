@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fs = require('fs')
 
 /*************** Creation compte / connexion ****************************/
 
@@ -10,6 +11,7 @@ exports.signup = (req, res, next) => {
             let user = {
                 mail: req.body.mail,
                 password: hash,
+                user_pict: '',
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 bio: null
@@ -71,11 +73,27 @@ exports.getProfilById = (req, res, next) => {
 };
 
 exports.profilUpdate = (req, res, next) => {
-    let userUpdate = [
+    let userUpdate = req.file ?
+    [
+        `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
         req.body.firstname, 
         req.body.lastname, 
         req.body.bio, 
-        req.params.id];
+        req.params.id
+    ]: [
+        req.body.user_pict,
+        req.body.firstname, 
+        req.body.lastname, 
+        req.body.bio, 
+        req.params.id
+    ];
+    // {
+    //     user_pict: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+    //     firstname: req.body.firstname, 
+    //     lastname: req.body.lastname, 
+    //     bio: req.body.bio, 
+    //     id: req.params.id
+    // }: { ...req.body };
     User.updateProfil(userUpdate, (error, data) => {
         if (error) {
             res.status(400).json({ error });
