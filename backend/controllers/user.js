@@ -87,13 +87,6 @@ exports.profilUpdate = (req, res, next) => {
         req.body.bio, 
         req.params.id
     ];
-    // {
-    //     user_pict: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
-    //     firstname: req.body.firstname, 
-    //     lastname: req.body.lastname, 
-    //     bio: req.body.bio, 
-    //     id: req.params.id
-    // }: { ...req.body };
     User.updateProfil(userUpdate, (error, data) => {
         if (error) {
             res.status(400).json({ error });
