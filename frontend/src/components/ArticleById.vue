@@ -22,7 +22,7 @@
                         <router-link :to="{ name: 'Profile', params: { userId: item.id } }">
                             <p>Publié par : {{ item.firstname }} {{ item.lastname }}</p>
                         </router-link>
-                        <p>Le : {{ moment(article.date_document) }}</p>
+                        <p>Le : {{ moment(item.date_document).format('LLLL') }}</p>
                     </div>
                 </div>
                 <p>{{ item.article_text }}</p>

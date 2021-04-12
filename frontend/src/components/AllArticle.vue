@@ -7,7 +7,7 @@
                         <h2>{{ article.title }}</h2>
                         <div>
                             <p>Publié par : {{ article.firstname }} {{ article.lastname }}</p>
-                            <p>Le : {{ article.date_document }}</p>
+                            <p>Le : {{ moment(article.date_document).format('LLLL') }}</p>
                         </div>
                 </router-link>
             </article>
@@ -20,11 +20,14 @@
 
 <script>
 import api from '../apiRequest'
+let moment = require('moment')
+moment.locale('fr')
 export default {
     name: 'AllArticles',
     data() {
         return {
-            articles: []
+            articles: [],
+            moment: moment
         }
     },
     mounted: function() {

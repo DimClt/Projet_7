@@ -27,7 +27,7 @@
                                             </router-link>
                                         </div>
                                         <div>
-                                            <p>Le : {{ comment.comment_date }}</p>
+                                            <p>Le : {{ moment(comment.comment_date).format('LLLL') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -51,6 +51,8 @@
 import api from '../apiRequest'
 import DeleteComment from './DeleteComment'
 import UpdateComment from './UpdateComment'
+let moment = require('moment')
+moment.locale('fr')
 export default {
     name: 'AllComment',
     components: {
@@ -61,9 +63,9 @@ export default {
         return {
             comment_article: this.$route.params.article_id,
             comments: [],
+            moment: moment,
             userId: localStorage.getItem('userId'),
             isAdmin: localStorage.getItem('admin'),
-            // update: false,
             commentSelected: null
         }
     },
