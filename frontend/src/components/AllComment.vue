@@ -4,29 +4,37 @@
             <ul class="all-comment__list">
                 <li v-for="comment in comments" v-bind:key="comment.comment_id">
                     <div class="all-comment__comment">
-                        <div v-if="!update && userId == comment.id" class="all-comment__controler">
-                            <DeleteComment :comment_id="comment.comment_id"/>
-                            <button @click.prevent="updateComponent" class="btn__update">Modifier</button>
+                        <div v-if="!commentSelected && userId == comment.id || isAdmin == 1" class="all-comment__controler">
+                            <div>
+                                <button @click.self="updateComponent(comment.comment_id)" v-bind:comment_id="comment.comment_id" class="btn__update">Modifier</button>
+                            </div>
+                            <div>
+                                <DeleteComment :comment_id="comment.comment_id"/>
+                            </div>
                         </div>
                         <div>
-                            <div v-if="!update">
-                                <div>
-                                    <img :src="comment.user_pict" alt="">
+                            <div v-if="commentSelected && isAdmin == 1 || userId == comment.comment_author && commentSelected == comment.comment_id">
+                                <UpdateComment :comment_id="comment.comment_id" :comment_text="comment.comment_text" />
+                            </div>
+                            <div v-if="!commentSelected">
+                                <div class="all-comment__comment--flex">
+                                    <img v-if="!comment.user_pict" src="../assets/profile-default.jpeg" alt="Image profile par défaut" class="profile__info--img-default">
+                                    <img v-else :src="comment.user_pict" alt="Image de profile personnalisée">
                                     <div>
                                         <div>
-                                            <p>{{ comment.firstname }} {{ comment.lastname }}</p>
+                                            <router-link :to="{ name: 'Profile', params: { userId: comment.id } }">
+                                                <p>{{ comment.firstname }} {{ comment.lastname }}</p>
+                                            </router-link>
                                         </div>
                                         <div>
                                             <p>Le : {{ comment.comment_date }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
                                 <div>
                                     <p>{{ comment.comment_text }}</p>
                                 </div>
-                            </div>
-                            <div v-if="update">
-                                <UpdateComment :comment_id="comment.comment_id" :comment_text="comment.comment_text" />
                             </div>
                         </div>
                     </div>
@@ -54,7 +62,9 @@ export default {
             comment_article: this.$route.params.article_id,
             comments: [],
             userId: localStorage.getItem('userId'),
-            update: false
+            isAdmin: localStorage.getItem('admin'),
+            // update: false,
+            commentSelected: null
         }
     },
     mounted: function() {
@@ -65,8 +75,8 @@ export default {
             })
     },
     methods: {
-        updateComponent() {
-            this.update = true
+        updateComponent(comment_id) {
+            this.commentSelected = comment_id
         }
     }
 }
@@ -82,6 +92,27 @@ export default {
     &__comment {
         background-color: rgba($color: #8E8E8E, $alpha: .25);
         border-radius: 5px;
+        a {
+            text-decoration: none;
+            color: #2C3E50;
+        }
+        &--flex {
+            display: flex;
+            justify-content: space-around;
+            & img {
+                padding-top: 1.25rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    &__controler {
+        display: flex;
+        justify-content: flex-end;
+        & div:last-child {
+            margin-left: 15px;
+        }
     }
 }
+
 </style>

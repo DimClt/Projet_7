@@ -44,24 +44,14 @@ export default {
         submitLoginForm() {
             api.login(this.loginForm)
             .then((response) => {
-                // if (response.status(401)) {
-                //     this.errors.push(response)
-                // }
                 this.$emit('submit', {
                     userId: response.data.userId,
                     token: response.data.token
                 })
                 localStorage.setItem('userId', response.data.userId)
+                localStorage.setItem('admin', response.data.admin)
                 localStorage.setItem('token', response.data.token)
                 window.location.reload()
-                // this.$router.replace('/home').catch(err => {
-                //     if (
-                //         err.name !== 'NavigationDuplicated' &&
-                //         !err.message.includes('Avoided redundant navigation to current location')
-                //     ) {
-                //         this.logError(err)
-                //     }
-                // })
             })
             .catch(error => {
                 this.errors = error.response.data.message

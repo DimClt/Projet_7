@@ -37,21 +37,13 @@ export default {
 </script>
 
 <style lang="scss">
-// .all-article {
-//     &__list {
-//         list-style-type: none;
-//         padding-left: 0;
-//         text-decoration: none;
-//         a {
-//             text-decoration: none;
-//             color: #000;
-            
-//         }
-//     }
-//     &__article {
-//         background-color: rgba($color: #8E8E8E, $alpha: .25);
-//         border-radius: 5px;
-//     }
-// }
+.section {
+    &__article-card {
+        a {
+            text-decoration: none;
+            color: #2C3E50;
+        }
+    }
+}
 </style>
 

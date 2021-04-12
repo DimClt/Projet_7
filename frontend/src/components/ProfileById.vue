@@ -1,13 +1,18 @@
 <template>
     <div class="profile">
-        <div class="profile__controler">
-            <DeleteProfile :userId="Number(userId)"/>
-            <router-link :to="{ name: 'User', params: { userId: this.userId }}">
-                <button @click.prevent="profileUpdate()" class="btn__update">Modifier</button>
-            </router-link>
+        <div v-if="userId == profile.id" class="profile__controler">
+            <div>
+                <router-link :to="{ name: 'User', params: { userId: this.userId }}">
+                    <button @click.prevent="profileUpdate()" class="btn__update">Modifier</button>
+                </router-link>
+            </div>
+            <div>
+                <DeleteProfile :userId="Number(userId)"/>
+            </div>
         </div>
         <div class="profile__info">
-            <img :src="profile.user_pict" alt="">
+            <img v-if="!profile.user_pict" src="../assets/profile-default.jpeg" alt="Image profile par défaut" class="profile__info--img-default">
+            <img v-else :src="profile.user_pict" alt="Image de profile personnalisée">
             <div>
                 <div class="profile_name">
                     <p>{{ profile.firstname }} {{ profile.lastname }}</p>
@@ -57,5 +62,23 @@ export default {
 </script>
 
 <style lang="scss">
-
+.profile {
+    &__controler {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 5%;
+        & div:last-child {
+            margin-left: 15px;
+        }
+    }
+    &__info {
+        display: flex;
+        justify-content: space-around;
+        & img {
+            padding-top: 1.25rem;
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
 </style>

@@ -38,6 +38,7 @@ export default {
   padding: 30px;
   
   a {
+    cursor: pointer;
     font-weight: bold;
     color: #2c3e50;
     text-decoration: underline;

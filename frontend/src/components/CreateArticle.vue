@@ -28,12 +28,11 @@ export default {
     },
     methods: {
         submitArticleForm() {
-                api.createArticle(this.article)
-                .then(() => {
-                    alert('Votre article à été publié.')
-                    this.$router.push('Home')
-                })
-            // }
+            api.createArticle(this.article)
+            .then(() => {
+                alert('Votre article à été publié.')
+                this.$router.push('Home')
+            })
         }
     }
 }
