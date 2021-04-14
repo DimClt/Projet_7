@@ -6,7 +6,7 @@
                 <input @change="changePict" type="file" accept=".jpg, .jpeg, .png" ref="file" name="user_pict" id="user_pict">
             </div>
             <div class="profile__firstmail">
-                <label for="lastname">Prénom :</label><br>
+                <label for="firstname">Prénom :</label><br>
                 <input v-model="firstname" type="text" name="firstname" id="firstname">
             </div>
             <div class="profile__lastmail">

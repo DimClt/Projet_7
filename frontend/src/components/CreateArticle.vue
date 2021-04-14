@@ -6,7 +6,7 @@
                 <input type="text" v-model.lazy="article.title" name="title" id="title" required>
             </div>
             <div class="article__text">
-                <textarea v-model.lazy="article.article_text" name="article_text" id="article_text" cols="30" rows="10" required></textarea>
+                <textarea v-model.lazy="article.article_text" name="article_text" id="article_text" cols="30" rows="10"  aria-label="Ecrivez votre article" required></textarea>
             </div>
         </div>
         <button type="submit" class="btn__submit" aria-label="Envoyer article">Publier</button>

@@ -13,11 +13,11 @@
             <div class="login__body">
                 <div class="login__form--mail">
                     <label for="mail">Adresse email :</label><br>
-                    <input v-model.lazy="loginForm.mail" type="mail" name="mail" id="mail" required>
+                    <input v-model.lazy="loginForm.mail" type="mail" name="mail" id="mail" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" required>
                 </div>
                 <div class="login__form--password">
                     <label for="password">Mot de passe :</label><br>
-                    <input v-model.lazy="loginForm.password" type="password" name="password" id="password" required>
+                    <input v-model.lazy="loginForm.password" type="password" name="password" id="password" pattern="[a-zA-Z0-9]{6,30}" required>
                 </div>
             </div>
             <button type="submit" class="btn__submit" aria-label="Connexion">Envoyer</button>

@@ -2,10 +2,11 @@
     <form @submit.prevent="updateArticleForm()" class="article__form">
         <div class="article__body">
             <div class="article__title">
+                <label for="title">Titre :</label>
                 <input type="text" v-model.lazy="newArticle.title" name="title" id="title">
             </div>
             <div class="article__text">
-                <textarea v-model.lazy="newArticle.article_text" name="article_text" id="article_text" cols="30" rows="10"></textarea>
+                <textarea v-model.lazy="newArticle.article_text" name="article_text" id="article_text" cols="30" rows="10"  aria-label="Modifier l'article"></textarea>
             </div>
         </div>
         <button type="submit" class="btn__submit" aria-label="Mettre à jour l'article">Publier</button>

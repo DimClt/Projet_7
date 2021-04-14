@@ -15,19 +15,19 @@
             <div class="signup__body">
                 <div class="signup__form--mail">
                     <label for="mail">Adresse email :</label><br>
-                    <input v-model.lazy="signupForm.mail" type="mail" name="mail" id="mail" required>
+                    <input v-model.lazy="signupForm.mail" type="mail" name="mail" id="mail" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" required>
                 </div>
                 <div class="signup__form--password">
                     <label for="password">Mot de passe :</label><br>
-                    <input v-model.lazy="signupForm.password" type="password" name="password" id="password" required>
+                    <input v-model.lazy="signupForm.password" type="password" name="password" id="password" pattern="[a-zA-Z0-9]{6,30}"  required>
                 </div>
                 <div class="signup__form--firstname">
                     <label for="firstname">Prénom :</label><br>
-                    <input v-model.lazy="signupForm.firstname" type="text" name="firstname" id="firstname" required>
+                    <input v-model.lazy="signupForm.firstname" type="text" name="firstname" id="firstname" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9]{3,30}"  required>
                 </div>
                 <div class="signup__form_lastname">
                     <label for="lastname">Nom :</label><br>
-                    <input v-model.lazy="signupForm.lastname" type="text" name="lastname" id="lastname" required>
+                    <input v-model.lazy="signupForm.lastname" type="text" name="lastname" id="lastname" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9]{3,30}"  required>
                 </div>
             </div>
             <button type="submit" @click.prevent="submitSignupForm" class="btn__submit">Envoyer</button>
