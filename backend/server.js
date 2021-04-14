@@ -1,21 +1,6 @@
 const http = require('http');
 const app = require('./app');
 
-// let mysql = require('mysql');
-
-// let connexion = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'DimClt',
-//     password: 'nobu25300',
-//     database: 'groupomania'
-// });
-
-// connexion.connect();
-// connexion.query('SELECT * FROM Users', (error, results) => {
-//     if (error) throw error;
-//     console.log(results);
-// });
-
 const normalizePort = val => {
   const port = parseInt(val, 10);
 

@@ -3,7 +3,7 @@
         <h1>Liste des articles</h1>
         <div class="section__all-article" v-if="articles.length">
             <article class="section__article-card" v-for="article in articles" v-bind:key="article.article_id">
-                <router-link :to="{ name: 'Article', params: { article_id: article.article_id } }">
+                <router-link :to="{ name: 'Article', params: { article_id: article.article_id } }" aria-label="Article">
                         <h2>{{ article.title }}</h2>
                         <div class="section__article-card--author">
                             <hr class="section__article-card--hr">

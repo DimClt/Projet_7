@@ -18,7 +18,7 @@
                 <textarea v-model="bio" name="bio" id="bio" cols="30" rows="10"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn__submit">Modifier</button>
+        <button type="submit" class="btn__submit" aria-label="Mettre à jour le profil">Modifier</button>
     </form>
 </template>
 

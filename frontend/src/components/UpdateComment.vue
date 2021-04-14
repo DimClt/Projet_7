@@ -5,7 +5,7 @@
                 <textarea v-model.lazy="newComment.comment_text" name="comment_text" id="comment_text" cols="30" rows="10"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn__submit">Modifier</button>
+        <button type="submit" class="btn__submit" aria-label="Mettre à jour le commentaire">Modifier</button>
     </form>
 </template>
 

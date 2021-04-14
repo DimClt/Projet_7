@@ -56,7 +56,7 @@ export default {
     color: #2c3e50;
     text-decoration: underline;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #266b4c;
     }
   }
   a:hover {

@@ -1,5 +1,5 @@
 <template>
-    <button class="btn__delete" @click.prevent="deleteCommentButton()">Supprimer</button>
+    <button class="btn__delete" @click.prevent="deleteCommentButton()" aria-label="Supprimer le commentaire">Supprimer</button>
 </template>
 
 <script>

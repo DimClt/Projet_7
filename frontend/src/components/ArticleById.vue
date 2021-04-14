@@ -7,7 +7,7 @@
             <div v-if="userId == item.id || isAdmin == 1" class="article-by-id__controler">
                 <div>
                     <router-link :to="{ name: 'Update', params: { article_id: item.article_id }, query: { ...item }}">
-                        <button class="btn__update">Modifier</button>
+                        <button class="btn__update" aria-label="Modifier l'article">Modifier</button>
                     </router-link>
                 </div>
                 <div>

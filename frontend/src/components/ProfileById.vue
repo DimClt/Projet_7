@@ -2,7 +2,7 @@
     <div class="profile">
         <div v-if="userId == profile.id" class="profile__controler">
             <div>
-                <router-link :to="{ name: 'User', params: { userId: this.userId }}">
+                <router-link :to="{ name: 'User', params: { userId: this.userId }}" aria-label="Modifier le profil">
                     <button @click.prevent="profileUpdate()" class="btn__update">Modifier</button>
                 </router-link>
             </div>

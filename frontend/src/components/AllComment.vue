@@ -6,7 +6,7 @@
                     <div class="all-comment__comment">
                         <div v-if="!commentSelected && userId == comment.id || isAdmin == 1" class="all-comment__controler">
                             <div>
-                                <button @click.self="updateComponent(comment.comment_id)" v-bind:comment_id="comment.comment_id" class="btn__update">Modifier</button>
+                                <button @click.self="updateComponent(comment.comment_id)" v-bind:comment_id="comment.comment_id" class="btn__update" aria-label="Modifier le commentaire">Modifier</button>
                             </div>
                             <div>
                                 <DeleteComment :comment_id="comment.comment_id"/>
@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss">
 .all-comment {
-    width: 70%;
+    width: 80%;
     margin: auto;
     &__list {
         list-style-type: none;
@@ -97,7 +97,7 @@ export default {
         }
     }
     &__comment {
-        background-color: rgba($color: #8E8E8E, $alpha: .25);
+        background-color: rgba($color: #FFD7D7, $alpha: .75);
         border-radius: 5px;
         max-height: 300px;
         overflow: hidden;

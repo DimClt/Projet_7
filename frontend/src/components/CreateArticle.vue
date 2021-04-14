@@ -9,7 +9,7 @@
                 <textarea v-model.lazy="article.article_text" name="article_text" id="article_text" cols="30" rows="10" required></textarea>
             </div>
         </div>
-        <button type="submit" class="btn__submit">Publier</button>
+        <button type="submit" class="btn__submit" aria-label="Envoyer article">Publier</button>
     </form>
 </template>
 

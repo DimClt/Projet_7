@@ -20,7 +20,7 @@
                     <input v-model.lazy="loginForm.password" type="password" name="password" id="password" required>
                 </div>
             </div>
-            <button type="submit" class="btn__submit">Envoyer</button>
+            <button type="submit" class="btn__submit" aria-label="Connexion">Envoyer</button>
         </form>
     </div>
 </template>

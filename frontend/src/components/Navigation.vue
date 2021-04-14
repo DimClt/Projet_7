@@ -1,16 +1,16 @@
 <template>
     <header class="header">
       <nav class="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/signup" v-if="!logToken">Inscription</router-link> <span v-if="!logToken">|</span>
-        <router-link to="/about" v-if="!logToken">About</router-link>
-        <router-link to="/publish" v-if="logToken">Publier</router-link> <span v-if="logToken">|</span>
-        <router-link :to="{ name: 'Profile', params: { userId: userId } }" v-if="logToken">Profil</router-link> <span v-if="logToken">|</span>
-        <a @click.prevent="logout" v-if="logToken">Déconnexion</a>
+        <router-link to="/" aria-label="Accueil">Home</router-link> |
+        <router-link to="/signup" v-if="!logToken" aria-label="inscription">Inscription</router-link> <span v-if="!logToken">|</span>
+        <router-link to="/about" v-if="!logToken" aria-label="A propos">About</router-link>
+        <router-link to="/publish" v-if="logToken" aria-label="Publier un article">Publier</router-link> <span v-if="logToken">|</span>
+        <router-link :to="{ name: 'Profile', params: { userId: userId } }" v-if="logToken" aria-label="Profil">Profil</router-link> <span v-if="logToken">|</span>
+        <a @click.prevent="logout" v-if="logToken" aria-label="Déconnexion">Déconnexion</a>
       </nav>
       <div v-if="logToken" class="header__log-banniere">
-          <img src="../assets/icon-above-font-mobile.png" alt="Groupomania" class="header__log-banniere--mobile">
-          <router-link to="/"><img src="../assets/icon-above-font-medium.png" alt="Groupomania" class="header__log-banniere--medium"></router-link>
+          <img src="../assets/icon-above-font-mobile.png" alt="Groupomania logo mobile" class="header__log-banniere--mobile">
+          <router-link to="/" aria-label="Accueil"><img src="../assets/icon-above-font-medium.png" alt="Groupomania logo large" class="header__log-banniere--medium"></router-link>
       </div>
     </header>
 </template>
@@ -28,14 +28,7 @@ export default {
         logout() {
             localStorage.clear()
             setTimeout(() => {
-                this.$router.push('/').catch(err => {
-                    if (
-                        err.name !== 'NavigationDuplicated' &&
-                        !err.message.includes('Avoided redundant navigation to current location')
-                    ) {
-                        this.logError(err)
-                    }
-                })
+            window.location.replace('/')
             }, 500)
         }
     }
