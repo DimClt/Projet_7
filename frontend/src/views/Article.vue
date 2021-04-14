@@ -5,7 +5,7 @@
         </section>
         <hr>
         <section class="comments">
-            <div class="comment-list">
+            <div class="comments__list">
                 <AllComment />
             </div>
             <hr>
@@ -31,5 +31,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+.comments {
+    &__list {
+        max-height: 900px;
+        overflow: hidden;
+        .all-comment {
+            overflow: auto;
+            max-height: 840Px;
+        }
+    }
+}
 </style>

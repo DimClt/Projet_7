@@ -1,5 +1,7 @@
 <template>
     <div class="signup">
+        <img src="../assets/acceuil-banniere-mobile.png" alt="Image d'acceuil" class="signup__img--mobile">
+        <img src="../assets/acceuil-banniere-large.png" alt="Image d'acceuil" class="signup__img--large">
         <div class="signup--title">
             <h1>Formulaire d'inscription</h1>
         </div>
@@ -78,6 +80,22 @@ export default {
 
 <style lang="scss">
 .signup {
+    img {
+        width: 100%;
+    }
+    &__img {
+        &--large {
+            display: none;
+        }
+        @media screen and (min-width: 900px) {
+            &--mobile {
+                display: none;
+            }
+            &--large {
+                display: block;
+            }
+        }
+    }
     &__body {
         margin-bottom: 1rem;
     }

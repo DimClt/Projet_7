@@ -5,7 +5,7 @@
             <UpdateArticle />
         </div>
         <div v-if="!articleSelected" class="create-article">
-            <h1>Publier un article :</h1>
+            <h1>Publier un nouvel article</h1>
             <CreateArticle />
         </div>
     </div>
@@ -29,5 +29,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.create-article {
+    h1 {
+        margin-bottom: 2.5rem;
+    }
+}
 </style>

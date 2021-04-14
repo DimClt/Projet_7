@@ -5,9 +5,12 @@
             <article class="section__article-card" v-for="article in articles" v-bind:key="article.article_id">
                 <router-link :to="{ name: 'Article', params: { article_id: article.article_id } }">
                         <h2>{{ article.title }}</h2>
-                        <div>
-                            <p>Publié par : {{ article.firstname }} {{ article.lastname }}</p>
-                            <p>Le : {{ moment(article.date_document).format('LLLL') }}</p>
+                        <div class="section__article-card--author">
+                            <hr class="section__article-card--hr">
+                            <div>
+                                <p>Publié par : {{ article.firstname }} {{ article.lastname }}</p>
+                                <p>Le : {{ moment(article.date_document).format('LLLL') }}</p>
+                            </div>
                         </div>
                 </router-link>
             </article>
@@ -42,9 +45,38 @@ export default {
 <style lang="scss">
 .section {
     &__article-card {
+        background-color: rgba($color:#FFD7D7, $alpha: .75);
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        &:hover {
+            background-color: rgba($color: #FFD7D7, $alpha: 1.0);
+        }
+        &--author {
+            background-color: #fff;
+            padding-bottom: 1rem;
+            div {
+                p:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
         a {
             text-decoration: none;
             color: #2C3E50;
+            @media screen and (min-width: 700px) {
+                display: flex;
+                justify-content: space-between;
+                padding-left: 1rem;
+            }
+        }
+        @media screen and (min-width: 700px) {
+            &--author {
+                display: flex;
+                background-color: #fff;
+            }
+            &--hr {
+                margin-right: 1rem;
+            }
         }
     }
 }

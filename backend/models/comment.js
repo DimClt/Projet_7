@@ -18,7 +18,7 @@ Comment.create = (comment, result) => {
 };
 
 Comment.getAllById = (comment_article, result) => {
-    dB.query('SELECT * FROM Comments INNER JOIN Users ON Comments.comment_author = Users.id WHERE Comments.comment_article=?', comment_article, (err, res) => {
+    dB.query('SELECT * FROM Comments INNER JOIN Users ON Comments.comment_author = Users.id WHERE Comments.comment_article=? ORDER BY comment_date ASC', comment_article, (err, res) => {
         if (err) {
             result(err, null);
             return err;

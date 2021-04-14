@@ -39,5 +39,15 @@ export default {
 </script>
 
 <style lang="scss">
-
+.article {
+    &__form {
+        padding-bottom: 2rem;
+    }
+    &__title {
+       margin-bottom: .5rem;
+    }
+    &__body {
+        margin-bottom: 1rem;
+    }
+}
 </style>

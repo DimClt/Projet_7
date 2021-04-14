@@ -18,7 +18,7 @@ Article.createNewArticle = (article, result) => {
 };
 
 Article.getAll = (result) => {
-    dB.query('SELECT * FROM Articles INNER JOIN Users ON Articles.author = Users.id', (err, res) => {
+    dB.query('SELECT * FROM Articles INNER JOIN Users ON Articles.author = Users.id ORDER BY date_document DESC', (err, res) => {
         if (err) {
             result(err, null);
             return err;

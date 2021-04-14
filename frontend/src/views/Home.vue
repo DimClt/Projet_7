@@ -4,7 +4,8 @@
             <AllArticles />
         </section>
         <section class="home__login" v-if="!user & !logToken">
-          <img class="home__img" src="../assets/acceuil-banniere-mobile.png" alt="Image d'acceuil">
+          <img src="../assets/acceuil-banniere-mobile.png" alt="Image d'acceuil" class="home__img--mobile">
+          <img src="../assets/acceuil-banniere-large.png" alt="Image d'acceuil" class="home__img--large">
           <LoginItem @submit="login" />
         </section>
     </div>
@@ -35,10 +36,21 @@ export default {
 
 <style lang="scss">
 .home {
+    img {
+        width: 100%;
+    }
     &__img {
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-  }
+        &--large {
+            display: none;
+        }
+        @media screen and (min-width: 900px) {
+            &--mobile {
+                display: none;
+            }
+            &--large {
+                display: block;
+            }
+        }
+    }
 }
 </style>

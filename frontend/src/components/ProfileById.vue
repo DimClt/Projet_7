@@ -12,7 +12,8 @@
         </div>
         <div class="profile__info">
             <img v-if="!profile.user_pict" src="../assets/profile-default.jpeg" alt="Image profile par défaut" class="profile__info--img-default">
-            <img v-else :src="profile.user_pict" alt="Image de profile personnalisée">
+            <img v-else :src="profile.user_pict" alt="Image de profile personnalisée"> 
+            <hr>
             <div>
                 <div class="profile_name">
                     <p>{{ profile.firstname }} {{ profile.lastname }}</p>
@@ -20,10 +21,10 @@
                 <div class="profile__mail">
                     <p>{{ profile.mail }}</p>
                 </div>
-                <div class="profile__bio">
-                    <p>{{ profile.bio }}</p>
-                </div>
             </div>
+        </div>
+        <div class="profile__bio">
+            <p>{{ profile.bio }}</p>
         </div>
     </div>
 </template>
@@ -63,6 +64,8 @@ export default {
 
 <style lang="scss">
 .profile {
+    margin: auto;
+    max-width: 400px;
     &__controler {
         display: flex;
         justify-content: flex-end;
@@ -75,9 +78,13 @@ export default {
         display: flex;
         justify-content: space-around;
         & img {
-            padding-top: 1.25rem;
+            align-self: center;
             width: 50px;
             height: 50px;
+            border-radius: 50px;
+        }
+        & hr {
+            margin-left: 1rem;
         }
     }
 }

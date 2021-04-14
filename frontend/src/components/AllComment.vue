@@ -17,22 +17,22 @@
                                 <UpdateComment :comment_id="comment.comment_id" :comment_text="comment.comment_text" />
                             </div>
                             <div v-if="!commentSelected">
-                                <div class="all-comment__comment--flex">
-                                    <img v-if="!comment.user_pict" src="../assets/profile-default.jpeg" alt="Image profile par défaut" class="profile__info--img-default">
-                                    <img v-else :src="comment.user_pict" alt="Image de profile personnalisée">
-                                    <div>
+                                <router-link :to="{ name: 'Profile', params: { userId: comment.id } }">
+                                    <div class="all-comment__comment--flex">
+                                        <img v-if="!comment.user_pict" src="../assets/profile-default.jpeg" alt="Image profile par défaut" class="profile__info--img-default">
+                                        <img v-else :src="comment.user_pict" alt="Image de profile personnalisée">
                                         <div>
-                                            <router-link :to="{ name: 'Profile', params: { userId: comment.id } }">
+                                            <div>
                                                 <p>{{ comment.firstname }} {{ comment.lastname }}</p>
-                                            </router-link>
-                                        </div>
-                                        <div>
-                                            <p>Le : {{ moment(comment.comment_date).format('LLLL') }}</p>
+                                            </div>
+                                            <div>
+                                                <p>Le : {{ moment(comment.comment_date).format('LLLL') }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </router-link>
                                 <hr>
-                                <div>
+                                <div class="all-comment__comment--text">
                                     <p>{{ comment.comment_text }}</p>
                                 </div>
                             </div>
@@ -86,26 +86,43 @@ export default {
 
 <style lang="scss">
 .all-comment {
+    width: 70%;
+    margin: auto;
     &__list {
         list-style-type: none;
         padding-left: 0;
         text-decoration: none;
+        li {
+            margin-bottom: 1rem;
+        }
     }
     &__comment {
         background-color: rgba($color: #8E8E8E, $alpha: .25);
         border-radius: 5px;
+        max-height: 300px;
+        overflow: hidden;
+        padding-bottom: 2rem;
         a {
             text-decoration: none;
             color: #2C3E50;
+        }
+        a:hover {
+            color: #42b983;
+            text-decoration: underline;
         }
         &--flex {
             display: flex;
             justify-content: space-around;
             & img {
-                padding-top: 1.25rem;
+                align-self: center;
                 width: 50px;
                 height: 50px;
+                border-radius: 50px;
             }
+        }
+        &--text {
+            overflow: auto;
+            max-height: 216px;
         }
     }
     &__controler {
@@ -114,6 +131,9 @@ export default {
         & div:last-child {
             margin-left: 15px;
         }
+    }
+    @media screen and (min-width: 900px) {
+        width: 50%;
     }
 }
 

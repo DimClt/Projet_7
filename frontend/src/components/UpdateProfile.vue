@@ -6,14 +6,15 @@
                 <input @change="changePict" type="file" accept=".jpg, .jpeg, .png" ref="file" name="user_pict" id="user_pict">
             </div>
             <div class="profile__firstmail">
-                <label for="lastname">Prénom</label><br>
+                <label for="lastname">Prénom :</label><br>
                 <input v-model="firstname" type="text" name="firstname" id="firstname">
             </div>
             <div class="profile__lastmail">
-                <label for="lastname">Nom</label><br>
+                <label for="lastname">Nom :</label><br>
                 <input v-model="lastname" type="text" name="lastname" id="lastname">
             </div>
             <div class="profile__bio">
+                <label for="bio">Bio :</label><br>
                 <textarea v-model="bio" name="bio" id="bio" cols="30" rows="10"></textarea>
             </div>
         </div>
